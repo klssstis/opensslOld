@@ -76,6 +76,33 @@ for vi in tagTover.keys():
         else:
             cveTofun[i['cve']['id']] = list(set(m))
 
+
+    a = checkCPE('openssl',product,version,"*",'*')
+    if a==False:
+        continue
+    else:
+        r = a
+    for i in r.json()['vulnerabilities']:
+        m = re.findall('[^\s]+\(\)', str(i))
+        if tagTover[vi] in verTocve:
+            if not i['cve']['id'] in verTocve[tagTover[vi]]:
+                verTocve[tagTover[vi]].append(i['cve']['id'])
+        else:
+            verTocve[tagTover[vi]] = [i['cve']['id']]
+        if len(m)==0:
+            cveTofun[i['cve']['id']] = list()
+            continue
+        for j in range(len(m)):
+            if '\\n' in m[j]:
+                m[j]=m[j].split('\\n')[1]
+            if '()' in m[j]:
+                m[j]=m[j].split('()')[0]
+        if i['cve']['id'] in cveTofun:
+            cveTofun[i['cve']['id']] = list(set(cveTofun[i['cve']['id']]).union(set(m)))
+        else:
+            cveTofun[i['cve']['id']] = list(set(m))
+
+
 t = datetime.datetime.today()
 
 fileOutdate = '/results/'+t.strftime('%Y%m%d')+'.csv'
