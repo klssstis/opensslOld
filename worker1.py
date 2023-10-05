@@ -105,8 +105,8 @@ for vi in tagTover.keys():
 
 t = datetime.datetime.today()
 
-fileOutdate = '/results/'+t.strftime('%Y%m%d')+'.csv'
-fileOutup = '/results/now.csv'
+fileOutdate = './results/'+t.strftime('%Y%m%d')+'.csv'
+fileOutup = './results/now.csv'
 with open(fileOutdate, "w") as fp:
     writer = csv.writer(fp, delimiter=",")
     writer.writerow(["tag", "version", "cve", "function"])
