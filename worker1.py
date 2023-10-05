@@ -48,8 +48,7 @@ for vi in tagTover.keys():
     product = tagTover[vi].split('-')[0]
     version = tagTover[vi].split('-')[1]
     if not tagTover[vi].endswith(version):
-        update = tagTover[vi].split(version)[1]
-        print(update[1:])
+        update = tagTover[vi].split(version)[1][1:]
     else:
         update = '-'
     a = checkCPE('openssl',product,version,update,'*')
@@ -57,9 +56,6 @@ for vi in tagTover.keys():
         continue
     else:
         r = a
-    print(product)
-    print(version)
-    print(update)
     for i in r.json()['vulnerabilities']:
         m = re.findall('[^\s]+\(\)', str(i))
         if tagTover[vi] in verTocve:
