@@ -115,4 +115,4 @@ with open(fileOutdate, "w") as fp:
             if len(cveTofun[ci]) >0 :
                 for fi in cveTofun[ci]:
                     writer.writerow([vi,tagTover[vi],ci,fi])
-                    os.system('cp '+fileOutdate+' '+fileOutup)
+os.system('cp '+fileOutdate+' '+fileOutup)
