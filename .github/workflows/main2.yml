@@ -1,0 +1,24 @@
+name: start worker
+#on: push
+on:
+  schedule:
+    - cron:  '5 22 * * *'   
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        ref: ${{ github.head_ref }}
+    - name: install depends
+      run: |
+          sudo apt-get update
+          sudo apt-get install -y git python3 sudo python3-pip
+          sudo pip3 install PyGithub          
+    - name: runs
+      env:
+        COMMIT_MSG: |
+          addcommit
+          skip-checks: true
+      run: |
+          sudo python3 worker2.py ${{ secrets.ACCESS_TOKEN }}
