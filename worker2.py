@@ -1,7 +1,7 @@
 import csv
 import os
 import requests
-
+import sys
 try:
     token = sys.argv[1]
 except IndexError:
