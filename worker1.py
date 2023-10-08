@@ -69,6 +69,8 @@ for vi in tagTover.keys():
         for j in range(len(m)):
             if '\\n' in m[j]:
                 m[j]=m[j].split('\\n')[1]
+            if '`' in m[j]:
+                m[j]=m[j].split('`')[1]                
             if '()' in m[j]:
                 m[j]=m[j].split('()')[0]
         if i['cve']['id'] in cveTofun:
@@ -95,7 +97,7 @@ for vi in tagTover.keys():
         for j in range(len(m)):
             if '\\n' in m[j]:
                 m[j]=m[j].split('\\n')[1]
-           if '`' in m[j]:
+            if '`' in m[j]:
                 m[j]=m[j].split('`')[1]                
             if '()' in m[j]:
                 m[j]=m[j].split('()')[0]
