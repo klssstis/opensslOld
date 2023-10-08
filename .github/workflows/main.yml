@@ -1,8 +1,8 @@
 name: start worker
-#on: push
-on:
-  schedule:
-    - cron:  '0 11 * * 0'   
+on: push
+#on:
+#  schedule:
+#    - cron:  '0 11 * * 0'   
 jobs:
   build:
     runs-on: ubuntu-latest
