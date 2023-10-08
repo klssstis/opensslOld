@@ -8,7 +8,7 @@ import datetime
 folderName = '/tmp/works/'
 gitUrl = 'https://github.com/openssl/openssl'
 fileTagList = '/tmp/listTag'
-os.system('rm -rm '+folderName)
+os.system('rm -rf '+folderName)
 os.system("git clone "+gitUrl+' '+folderName)
 os.system('cd '+folderName+'&&git tag -l>>'+fileTagList)
 
