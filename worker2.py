@@ -118,3 +118,4 @@ for i in workList:
             os.system('zip -r /tmp/'+i[0]+'_'+i[2]+'_'+i[3]+'.zip '+folderName)
             os.system('echo '+token+'| gh auth login -h github.com --with-token')
             os.system('gh release create '+i[0]+'_'+i[2]+'_'+i[3]+' --notes \"insert while(1){}\" \''+'/tmp/'+i[0]+'_'+i[2]+'_'+i[3]+'.zip#download\'')
+            os.system('rm -rf /tmp/'+i[0]+'_'+i[2]+'_'+i[3]+'.zip ')
